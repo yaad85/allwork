@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Divs Example</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-y: auto; /* Ensure the body is scrollable */
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(bakgound.jpeg);
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: -1; /* Ensures the background image is behind all other content */
+        }
+        
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            height: 400px;
+            padding: 20px;
+            background: linear-gradient(to left bottom, #26483D, #26423B, #233436, #222A32);
+            border: 1px solid #07905D;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            margin-top: 160px;
+            z-index: 700;
+        }
+        .login-container h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: #07905D;
+            color: white;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #066F4A;
+        }
+
+        /* Animated divs styling */
+        .animated-div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            animation: animateDiv 5s infinite;
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .div1 {
+            top: 100px;
+            left: 150px;
+        }
+        .div2 {
+            top: 400px;
+            right: 100px;
+        }
+        .div3 {
+            bottom: 150px;
+            left: 500px;
+        }
+
+        @keyframes animateDiv {
+            0% {
+                transform: rotate(0deg) translateY(0);
+                opacity: 0.1;
+            }
+            25% {
+                transform: rotate(180deg) translateY(-20px);
+                opacity: 0.3;
+            }
+            50% {
+                transform: rotate(360deg) translateY(0);
+                opacity: 0.1;
+            }
+            75% {
+                transform: rotate(180deg) translateY(20px);
+                opacity: 0.3;
+            }
+            100% {
+                transform: rotate(0deg) translateY(0);
+                opacity: 0.1;
+            }
+        }
+
+        .main-container1 {
+            background-color: white;
+            height: 100%;
+            width: 100%;
+        }
+        .inner-div {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #4caf50;
+        }
+        .top-left {
+            top: 0;
+            left: 0;
+            border-bottom-right-radius: 60px;
+        }
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            border-top-right-radius: 60px;
+        }
+        .top-right {
+            top: 0;
+            right: 0;
+            border-bottom-left-radius: 60px;
+        }
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+            border-top-left-radius: 60px;
+        }
+
+        .commondiv {
+            height: 100px;
+            width: 150px;
+            margin: 30px;
+            position: relative;
+        }
+        
+        .parent {
+            width: 70px;
+            height: 70px;
+            animation: abc 5s linear infinite;
+            position: absolute;
+        }
+        @keyframes abc {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .common2 {
+            width: 40px;
+            height: 40px;
+            transform-origin: right bottom;
+            border-bottom-left-radius: 250px;
+            border-top-right-radius: 250px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0.6;
+        }
+
+        .leaf1 { background-color: #90EE90; transform: rotate(0deg); }
+        .leaf2 { background-color: #90EE90; transform: rotate(22.6deg); }
+        .leaf3 { background-color: #90EE90; transform: rotate(45.2deg); }
+        .leaf4 { background-color: #90EE90; transform: rotate(67.8deg); }
+        .leaf5 { background-color: #90EE90; transform: rotate(90.4deg); }
+        .leaf6 { background-color: #90EE90; transform: rotate(113deg); }
+        .leaf7 { background-color: #90EE90; transform: rotate(135.6deg); }
+        .leaf8 { background-color: #90EE90; transform: rotate(158.2deg); }
+        .leaf9 { background-color: #90EE90; transform: rotate(180.8deg); }
+        .leaf10 { background-color: #90EE90; transform: rotate(203.4deg); }
+        .leaf11 { background-color: #90EE90; transform: rotate(226deg); }
+        .leaf12 { background-color: #90EE90; transform: rotate(248.6deg); }
+        .leaf13 { background-color: #90EE90; transform: rotate(271.2deg); }
+        .leaf14 { background-color: #90EE90; transform: rotate(293.8deg); }
+        .leaf15 { background-color: #90EE90; transform: rotate(316.4deg); }
+        .leaf16 { background-color: #90EE90; transform: rotate(339deg); }
+
+        .leafcircle {
+            position: absolute;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 120px;
+            height: 50px;
+            width: 50px;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .animated-div {
+                width: 75px;
+                height: 75px;
+            }
+            .div1 {
+                top: 50px;
+                left: 50px;
+            }
+            .div2 {
+                top: 200px;
+                right: 50px;
+            }
+            .div3 {
+                bottom: 100px;
+                left: 200px;
+            }
+            .login-container {
+                margin-top: 100px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animated-div {
+                width: 50px;
+                height: 50px;
+            }
+            .div1 {
+                top: 25px;
+                left: 25px;
+            }
+            .div2 {
+                top: 100px;
+                right: 25px;
+            }
+            .div3 {
+                bottom: 50px;
+                left: 100px;
+            }
+            .login-container {
+                width: calc(100% - 60px);
+                margin-top: 80px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            
+        }
+
+        .flag {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(to bottom, #ff9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%);
+            position: relative;
+          
+            
+            margin-bottom: 20px;
+             box-shadow: 0 0 1px 1px #07905D;
+            
+            
+        }
+        .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+
+        }
+        .flag2 {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(to right, #ff0000 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ff0000 66.6%);
+             box-shadow: 0 0 1px 1px #07905D;
+            margin-top: 20px;
+            display: flex;
+    
+
+            
+
+        }
+        .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+
+        .flag3 {
+            width: 200px;
+            height: 150px;
+            position: relative;
+            border: 1px solid #000;
+            margin-top: 40px;
+            margin-bottom: 20px;
+             box-shadow: 0 0 1px 1px #07905D;
+        }
+
+        .stripes {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                #B90B2E 11.1%,
+                #ffffff 11.1%,
+                #ffffff 22.2%,
+                #B90B2E 22.2%,
+                #B90B2E 33.3%,
+                #ffffff 33.3%,
+                #ffffff 44.4%,
+                #B90B2E 44.4%,
+                #B90B2E 55.5%,
+                #ffffff 55.5%,
+                #ffffff 66.6%,
+                #B90B2E 66.6%,
+                #B90B2E 77.7%,
+                #ffffff 77.7%,
+                #ffffff 88.8%,
+                #B90B2E 88.8%
+            );
+        }
+
+        .canton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 40%;
+            background: #002665;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="leafcircle">
+            <div style="width: 100%; height: 100%;">
+                <div class="parent">
+                    <div class="common2 leaf1"></div>
+                    <div class="common2 leaf2"></div>
+                    <div class="common2 leaf3"></div>
+                    <div class="common2 leaf4"></div>
+                    <div class="common2 leaf5"></div>
+                    <div class="common2 leaf6"></div>
+                    <div class="common2 leaf7"></div>
+                    <div class="common2 leaf8"></div>
+                    <div class="common2 leaf9"></div>
+                    <div class="common2 leaf10"></div>
+                    <div class="common2 leaf11"></div>
+                    <div class="common2 leaf12"></div>
+                    <div class="common2 leaf13"></div>
+                    <div class="common2 leaf14"></div>
+                    <div class="common2 leaf15"></div>
+                    <div class="common2 leaf16"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <article>
+        <div style="display: flex; space-between: 20px; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative;">
+            <div class="commondiv"></div>
+        </div>
+    </article>
+    <!-- Your content here -->
+    <section>
+        <div class="login-container" style="margin-bottom: 100px; align-items: center; justify-content: center;">
+            <h2 style="margin-top: 90px;">Login</h2>
+            <form action="#" method="post" style="margin-top: 100px;">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </section>
+    <div class="animated-div div1">
+        <div class="main-container1">
+            <div class="inner-div top-left"></div>
+            <div class="inner-div bottom-left"></div>
+            <div class="inner-div top-right"></div>
+            <div class="inner-div bottom-right"></div>
+        </div>
+    </div>
+    <div class="animated-div div2">
+        <div class="main-container1">
+            <div class="inner-div top-left"></div>
+            <div class="inner-div bottom-left"></div>
+            <div class="inner-div top-right"></div>
+            <div class="inner-div bottom-right"></div>
+        </div>
+    </div>
+    <div class="animated-div div3">
+        <div class="main-container1">
+            <div class="inner-div top-left"></div>
+            <div class="inner-div bottom-left"></div>
+            <div class="inner-div top-right"></div>
+            <div class="inner-div bottom-right"></div>
+        </div>
+    </div>
+     <div class="container">
+        <div class="flag">
+            <div> <img src="ashoka.png" alt="" width="25%" height="25%" style=" margin:50px 70px;"></div>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="flag2">
+        
+            <img src="image.png" alt="" height="25%" width="25%" style="margin:55px 70px;"">
+       
+    </div>
+    </div>
+    <Div class="container3">
+        <div class="flag3">
+            <div class="stripes">
+            </div>
+            <div class="canton">
+                <img src="america.png" alt="" height="100%" width="100%">
+
+            </div>
+        </div>
+        </Div>
+</body>
+</html>
